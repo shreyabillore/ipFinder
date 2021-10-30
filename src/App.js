@@ -28,7 +28,7 @@ function App() {
     const response = await axios.get(url);
     console.log(response.data.ip)
     if (response.ok) {
-      setIpData(response.data.ip)
+     setIpData(response.data.ip)
       
     }
     else {
@@ -64,7 +64,7 @@ const responseGeodata = await axios.get(geoLocationUrl)
     } else {
       setStatus('Locating...');
       navigator.geolocation.getCurrentPosition((position) => {
-        setStatus(null);
+        // setStatus(null);
         setLatPosition(position.coords.latitude);
         console.log(userLat);
         setLongPosition(position.coords.longitude);
@@ -99,7 +99,7 @@ const responseGeodata = await axios.get(geoLocationUrl)
 <Card style={{ width:'25rem',height:'50rem',padding:'0px'}}>
 <Card.Img variant="top" src={`https://www.countryflags.io/${countryData.country_code}/flat/64.png`}  style={{ width: '5rem' }} />
   <Card.Body style={{fontSize:'15px',fontWeight:'bold', display:'flex',flexDirection:'column',alignItems:'flex-start'}}>
-  <Card.Text>My IP is {ipData} !!</Card.Text>
+  <Card.Text>{ipData ?`My IP is ${ipData} !!` : status}</Card.Text>
     <Card.Text>City : {countryData.city}</Card.Text>
     <Card.Text>Region : {countryData.region_name}</Card.Text>
     <Card.Text>Country Code : {countryData.country_code}</Card.Text>
